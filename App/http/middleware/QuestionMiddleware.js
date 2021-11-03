@@ -15,4 +15,4 @@ class QuestionValidator {
 
 }
 
-module.exports = QuestionValidator();
+module.exports = new QuestionValidator();

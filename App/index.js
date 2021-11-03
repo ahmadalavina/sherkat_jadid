@@ -5,7 +5,7 @@ const http = require('http');
 const bodyparser = require('body-parser');
 const app = express();
 const passport = require('passport');
-
+const io = require('socket.io')(9090);
 //
 //@author : ahmdalavi1234@gmail.com
 //
@@ -15,7 +15,9 @@ module.exports = class Server {
     constructor() {
         this.StartMongooseServer()
         this.setupExpress()
+        this.SetUpSocket()
         this.APIs()
+        
     }
 
 
@@ -43,6 +45,8 @@ module.exports = class Server {
     setupExpress() {
         console.time("Server Started in ")
         const server = http.createServer(app);
+        
+
         server.listen(config.port, () => console.log(`Listening on port ${config.port}`));
         console.timeEnd("Server Started in ")
     }
@@ -58,6 +62,12 @@ module.exports = class Server {
 
         console.timeEnd("API Started in ")
 
+    }
+    SetUpSocket(){
+
+        io.on('connection',socket=>{
+            console.log(socket.id)
+        })
     }
 
     SetRateTime() {

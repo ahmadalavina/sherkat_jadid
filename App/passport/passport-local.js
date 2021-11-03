@@ -6,11 +6,7 @@ const JWTstrategy = require('passport-jwt').Strategy;
 
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
-
-
-
-    
-       
+//TODO: I need to config i think somthing Wrong 
 
 passport.use(
     'signup',
